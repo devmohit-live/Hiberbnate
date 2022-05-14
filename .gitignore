@@ -27,6 +27,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+*/*.jar
 */lib/*
 
 # External tool builders
