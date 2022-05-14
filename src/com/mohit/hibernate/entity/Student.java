@@ -2,6 +2,8 @@ package com.mohit.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ public class Student {
 		
 	@Id //tells it is a key
 	@Column(name = "id") // optional when table attribute name and class properies have exactly same name
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // telling to use ai feature in this filed acc to mysql
 	private int id;
 	
 	@Column(name="first_name")
