@@ -13,6 +13,7 @@ public class TestJDBC {
 		try {
 			System.out.println("Connecting yo db "+jdbcURL);
 			Connection myconn = DriverManager.getConnection(jdbcURL,user,pass);
+			System.out.println(myconn.toString());
 			System.out.println("Connection Succesfull!");
 		}catch(Exception e){
 			e.printStackTrace();
