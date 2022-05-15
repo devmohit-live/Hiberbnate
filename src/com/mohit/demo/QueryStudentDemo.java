@@ -19,18 +19,21 @@ public class QueryStudentDemo {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			//create a student obj
-			System.out.println("Creating new Student");
-			Student student = new Student("Mohit","Thakur","mohit@boxer-association.com");
-			
+
 			//start a transaction
 			System.out.println("Starting a transaction");
 			session.beginTransaction();
 			//query  students table
 			List<Student> list = session.createQuery("from Student").getResultList();
 			
+			// QUery students whose lastname is xyz or firstname is S1
+			//remmeber s is the student object returned by hibernate cursor s.propertyname => from student class
+			List<Student> l2 = session.createQuery("from Student s where s.lastName='xyz' OR s.firstName='S1'").getResultList();
+			
+			
 			//display students
-			for(Student s: list) System.out.println(s);
+			displayResult(list);
+			displayResult(l2);
 			
 			System.out.println("Commiting this transactions");
 			session.getTransaction().commit();
@@ -38,6 +41,11 @@ public class QueryStudentDemo {
 			factory.close();
 		}
 
+	}
+
+	private static void displayResult(List<Student> l2) {
+		System.out.println(" Query Results");
+		for(Student s: l2) System.out.println(s);
 	}
 
 }
