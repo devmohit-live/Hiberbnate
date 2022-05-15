@@ -30,10 +30,15 @@ public class QueryStudentDemo {
 			//remmeber s is the student object returned by hibernate cursor s.propertyname => from student class
 			List<Student> l2 = session.createQuery("from Student s where s.lastName='xyz' OR s.firstName='S1'").getResultList();
 			
+			List<Student> l3 = session.createQuery("from Student s where s.email LIKE '%xyz.com'").getResultList();
+			List<Student> l4 = session.createQuery("from Student s where s.email LIKE '%gmail.com'").getResultList();
+			
 			
 			//display students
 			displayResult(list);
 			displayResult(l2);
+			displayResult(l3);
+			displayResult(l4);
 			
 			System.out.println("Commiting this transactions");
 			session.getTransaction().commit();
