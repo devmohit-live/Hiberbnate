@@ -27,7 +27,9 @@ public class InstructorDetail {
 	//adding instrucotr field for instrucor : BI Directional mapping
 	
 	//Instructor class have this property of instructor details named :instructorDetail
-	@OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+//	@OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "instructorDetail", 
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
 	private Instructor instructor;
 
 	public InstructorDetail() {

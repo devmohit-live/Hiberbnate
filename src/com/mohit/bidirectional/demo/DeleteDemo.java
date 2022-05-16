@@ -4,8 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.mohit.hibernate.unidirectional.entity.Instructor;
-import com.mohit.hibernate.unidirectional.entity.InstructorDetail;
+import com.mohit.hibernate.bidirectional.entity.Instructor;
+import com.mohit.hibernate.bidirectional.entity.InstructorDetail;
+
 
 public class DeleteDemo {
 
@@ -17,12 +18,17 @@ public class DeleteDemo {
 		try {
 			//begin
 			session.beginTransaction();
-			Instructor instructor =  session.get(Instructor.class, 2);
-			session.delete(instructor);
+			InstructorDetail instructorDetail =  session.get(InstructorDetail.class, 1);
+			
+			//remove the association
+			instructorDetail.getInstructor().setInstructorDetail(null);
+			
+			session.delete(instructorDetail);
 			//operation
 			
 			session.getTransaction().commit();
 		}finally {
+			session.close();
 			factory.close();
 		}
 	}
