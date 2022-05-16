@@ -20,8 +20,12 @@ public class CreateDemo {
 			session.beginTransaction();
 			
 			//create Instructor
-			Instructor instructor = new Instructor("Mike","Tyson","tyson@mike.com");
-			InstructorDetail details = new InstructorDetail("www.youtube.com/realmiketyson","Feeding to pet Pigeons");
+//			Instructor instructor = new Instructor("Mike","Tyson","tyson@mike.com");
+//			InstructorDetail details = new InstructorDetail("www.youtube.com/realmiketyson","Feeding to pet Pigeons");
+			
+			Instructor instructor = new Instructor("Mohit","Singh","singh@mohit.com");
+			InstructorDetail details = new InstructorDetail("www.youtube.com/realmohit","Boxing");
+			
 			instructor.setInstructor_detail(details);
 			session.save(instructor); //cascading all will save the details too
 //			one to one unidirectional cascade => instructor->instructor_details
