@@ -1,11 +1,11 @@
-package com.mohit.demo;
+package com.mohit.unidirectional.demo;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.mohit.hibernate.entity.Instructor;
-import com.mohit.hibernate.entity.InstructorDetail;
+import com.mohit.hibernate.unidirectional.entity.Instructor;
+import com.mohit.hibernate.unidirectional.entity.InstructorDetail;
 
 public class DeleteDemo {
 

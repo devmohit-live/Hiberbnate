@@ -1,4 +1,4 @@
-package com.mohit.hibernate.entity;
+package com.mohit.hibernate.unidirectional.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

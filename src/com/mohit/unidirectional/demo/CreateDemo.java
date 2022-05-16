@@ -1,11 +1,11 @@
-package com.mohit.demo;
+package com.mohit.unidirectional.demo;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.mohit.hibernate.entity.Instructor;
-import com.mohit.hibernate.entity.InstructorDetail;
+import com.mohit.hibernate.unidirectional.entity.Instructor;
+import com.mohit.hibernate.unidirectional.entity.InstructorDetail;
 
 public class CreateDemo {
 
@@ -26,7 +26,7 @@ public class CreateDemo {
 			Instructor instructor = new Instructor("Mohit","Singh","singh@mohit.com");
 			InstructorDetail details = new InstructorDetail("www.youtube.com/realmohit","Boxing");
 			
-			instructor.setInstructor_detail(details);
+			instructor.setInstructorDetail(details);
 			session.save(instructor); //cascading all will save the details too
 //			one to one unidirectional cascade => instructor->instructor_details
 			session.getTransaction().commit();
