@@ -14,3 +14,6 @@ det.getInstrucor().setInstructorDetails(null); // this should be done
 
 //Similary 
 For vice versa
+
+However the current db doen't allows that, we can delete the details but not the instructor(ex take a fb profile, it is wise to delte dp but not to keep dp and delete the profile)
+bi-directional here means read and access data from anyone of them as access/entry point
