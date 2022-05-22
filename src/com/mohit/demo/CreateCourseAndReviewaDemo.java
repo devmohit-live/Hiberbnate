@@ -23,16 +23,14 @@ public class CreateCourseAndReviewaDemo {
 			session.beginTransaction();
 			
 			//create a course
-			Course course = new Course("How to box like a professional");
+			Course course = new Course("How to code in Java like a PRO");
 			
 			//create reviews
 			Review r1 = new Review("4.5 out of 5 stars");
 			Review r2 = new Review("Amazing Course");
 			Review r3 = new Review("From Beginner to Pro");
 			Review r4 = new Review("Covers all the basics and some amazing pro techniques");
-			Review r5 = new Review("Good for learning new moves");
 			// add reviews
-			course.addReview(r5);
 			course.addReview(r4);
 			course.addReview(r3);
 			course.addReview(r2);
