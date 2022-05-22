@@ -19,7 +19,7 @@ public class GetInstructorCourses {
 		
 		try {
 			session.beginTransaction();
-			//entity and their relationship
+			//entity and their relationship 
 			Instructor instructor = session.get(Instructor.class, 1);
 			for(Course c : instructor.getCourses())
 				System.out.println(c);
