@@ -33,8 +33,10 @@ public class Student {
 	@Column(name = "email")
 	private String email;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinTable(name = "course_student",
+	@ManyToMany(fetch = FetchType.LAZY, 
+			cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+	@JoinTable(
+			name = "course_student",
 			joinColumns=@JoinColumn(name="student_id"), 
 			inverseJoinColumns = @JoinColumn(name="course_id") )
 	private List<Course> courses;
@@ -83,11 +85,11 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(String firstName, String lastName, String email, List<Course> courses) {
+	public Student(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.courses = courses;
+		this.courses = new ArrayList<Course>();
 	}
 
 	@Override
@@ -97,12 +99,12 @@ public class Student {
 	}
 	
 	
-	public void addCourse(Course course) {
-		if(courses == null) courses = new ArrayList<>();
-		
-		courses.add(course);
-		course.getStudents().add(this);
-	}
+//	public void addCourse(Course course) {
+//		if(courses == null) courses = new ArrayList<>();
+//		
+//		courses.add(course);
+//		course.getStudents().add(this);
+//	}
 	
 	
 	

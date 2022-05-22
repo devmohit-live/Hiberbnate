@@ -21,15 +21,15 @@ import javax.persistence.Table;
 @Table(name = "course")
 public class Course {
 
-	@Column(name = "id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
 	@JoinColumn(name = "instructor_id")
 	private Instructor instructor;
 	
@@ -45,10 +45,11 @@ public class Course {
 	}
 
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
 	@JoinTable(name = "course_student",
 			joinColumns = @JoinColumn(name="course_id"),
-			inverseJoinColumns = @JoinColumn(name="student_id"))
+			inverseJoinColumns = @JoinColumn(name="student_id")
+	)
 	private List<Student> students;
 
 
@@ -103,6 +104,7 @@ public class Course {
 	public Course(String title) {
 		this.title = title;
 		this.reviews = new ArrayList<>();
+		this.students = new ArrayList<Student>();
 	}
 
 
@@ -119,9 +121,9 @@ public class Course {
 	
 	
 	public void addStudent(Student student) {
-		if(students == null) students = new ArrayList<>();
+		if(students == null) students = new ArrayList<Student>();
 		
 		students.add(student);
-		student.getCourses().add(this);
+//		student.getCourses().add(this);
 	}
 }
